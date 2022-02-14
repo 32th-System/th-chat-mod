@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "th-chat-mod",
+  "version": "${version}",
+
+  "name": "ThChatMod",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "32th System"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "UNLICENSE",
+  "icon": "assets/th-chat-mod/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.s32thc.ThChatMod.ThChatMod"
+    ]
+  },
+
+  "mixins": [
+    "th-chat-mod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12.12",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

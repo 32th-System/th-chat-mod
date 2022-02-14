@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.s32thc.ThChatMod.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "server": [
+    "ThChatMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

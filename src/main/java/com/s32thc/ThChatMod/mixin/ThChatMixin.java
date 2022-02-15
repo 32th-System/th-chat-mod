@@ -42,8 +42,6 @@ public abstract class ThChatMixin implements ServerPlayPacketListener {
     public void onChatMessage(ChatMessageC2SPacket packet) {
         String string = StringUtils.normalizeSpace(packet.getChatMessage());
 
-
-
         for(int i = 0; i < string.length(); ++i) {
             if (!SharedConstants.isValidChar(string.charAt(i))) {
                 this.disconnect(new TranslatableText("multiplayer.disconnect.illegal_characters"));

@@ -31,7 +31,8 @@ public class ThChatMod implements ModInitializer {
 				FabricLoader.getInstance().getObjectShare().put("th-chat-mod:blockedWords", new JsonArray());
 			}
 		} catch (FileNotFoundException e) {
-			LOGGER.info("Exception :(");
+			LOGGER.error("Failed to load blocked_words.json, proceeding with no list");
+			FabricLoader.getInstance().getObjectShare().put("th-chat-mod:blockedWords", new JsonArray());
 		}
 		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
 			dispatcher.register(CommandManager.literal("addBlockedWord")
@@ -39,11 +40,12 @@ public class ThChatMod implements ModInitializer {
 					.then(CommandManager.argument("word", greedyString()).executes(context -> {
 				JsonArray arr = (JsonArray)FabricLoader.getInstance().getObjectShare().get("th-chat-mod:blockedWords");
 				String word = getString(context, "word");
-				if(arr.contains(new JsonPrimitive(word))) {
+				JsonPrimitive jWord = new JsonPrimitive(word);
+				if(arr.contains(jWord)) {
 					context.getSource().sendError(new LiteralText("Word " + word + " already in list!"));
 					return 1;
 				}
-				arr.add(word);
+				arr.add(jWord);
 				context.getSource().sendFeedback(new LiteralText("Word added: " + word), true);
 				try {
 					FileWriter w = new FileWriter("blocked_words.json");
